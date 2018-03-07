@@ -1,0 +1,15 @@
+<div class="container">
+  <app-menu-medecin></app-menu-medecin>
+<agm-map [latitude]="lat" [longitude]="lng" 
+[disableDefaultUI]=false
+[zoomControl]="false"
+(mapClick)="malClicked($event)">
+  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+</agm-map>
+<form #f="ngForm" (ngSubmit)="AjouterCabinet(f.value)">
+<div class="ui fluid action input">
+  <input type="text" placeholder="Description..." ngModel name="description">
+  <button type="submit" class="ui button">Ajouter Cabinet</button>
+</div>
+</form>
+</div>

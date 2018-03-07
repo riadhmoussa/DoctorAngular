@@ -1,0 +1,161 @@
+<div class="grid-container">
+  <div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+      <h1>Welcome to Foundation</h1>
+    </div>
+  </div>
+
+  
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-8 medium-8 cell">
+      
+      <!-- Grid Example -->
+
+
+      <h5>We bet you&rsquo;ll need a form somewhere:</h5>
+      <form #f="ngForm" (ngSubmit)="addmedecin(f.value)">
+
+
+
+
+          <div class="grid-x grid-padding-x">
+              <div class="large-6 medium-6 cell">
+                <label>Email </label>
+                <input type="email" name="Email" placeholder="Entrer Emaill" ngModel />
+              </div>
+              <div class="large-6 medium-6 cell">
+                <label>Mot De Passe </label>
+                <input type="password" name="MotDePasse" placeholder="Entrer Mot De Passe" ngModel />
+              </div>
+              
+            </div>
+            
+
+
+            <div class="grid-x grid-padding-x">
+                <div class="large-6 medium-6 cell">
+                  <label>Nom  </label>
+                  <input type="text" name="NomMedecin" placeholder="Entrer Nom" ngModel />
+                </div>
+                <div class="large-6 medium-6 cell">
+                  <label>Prénom </label>
+                  <input type="text" name="PrenomMedecin" placeholder="Entrer Prénom" ngModel />
+                </div>
+                
+              </div>
+
+
+              <div class="grid-x grid-padding-x">
+                  <div class="large-6 medium-6 cell">
+                    <label>CIN </label>
+                    <input type="text" name="CINMedecin" placeholder="Entrer CIN"  ngModel/>
+                  </div>
+                  <div class="large-6 medium-6 cell">
+                    <label>Matricule </label>
+                    <input type="text" name="MatMedecin" placeholder="Entrer Matricule" ngModel />
+                  </div>
+                  
+                </div>
+
+
+                <div class="grid-x grid-padding-x">
+                    <div class="large-12 cell">
+                      <label>Sexe </label>
+                      <select name="Sexe" ngModel>
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+
+
+
+
+     
+
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 medium-12 cell">
+            <label>Date De Naissance </label>
+            <input id="date" name="DateNaissMedecin" ngModel type="date" placeholder="Entrer Date De Naissance">
+          </div>
+        </div>
+
+
+
+        <div class="grid-x grid-padding-x">
+            <div class="large-12 cell">
+              <label>Adresse </label>
+              <textarea name="AdresseMedecin" placeholder="Entrer Adresse" ngModel></textarea>
+            </div>
+          </div>
+
+
+
+          <div class="grid-x grid-padding-x">
+              <div class="large-4 medium-4 cell">
+                <label>Gouvernorat </label>
+                <select name="VilleMedecin" ngModel>
+                  <option value="Ariana">Ariana</option>
+                  <option value="Béja">Béja</option>
+                  <option value="Ben Arous">Ben Arous</option>
+                  <option value="Bizerte">Bizerte</option>
+                  <option value="Gabès">Gabès</option>
+                  <option value="Gafsa">Gafsa</option>
+                  <option value="Jendouba">Jendouba</option>
+                  <option value="Kairouan">Kairouan</option>
+                  <option value="Kasserine">Kasserine</option>
+                  <option value="Kébili">Kébili</option>
+                  <option value="Le Kef">Le Kef</option>
+                  <option value="Mahdia">Mahdia</option>
+                  <option value="La Manouba">La Manouba</option>
+                  <option value="Médenine">Médenine</option>
+                  <option value="Monastir">Monastir</option>
+                  <option value="Nabeul">Nabeul</option>
+                  <option value="Sfax">Sfax</option>
+                  <option value="Sidi Bouzid">Sidi Bouzid</option>
+                  <option value="Siliana">Siliana</option>
+                  <option value="Sousse">Sousse</option>
+                  <option value="Tataouine">Tataouine</option>
+                  <option value="Tozeur">Tozeur</option>
+                  <option value="Tunis">Tunis</option>
+                  <option value="Zaghouan">Zaghouan</option>
+                </select>
+              </div>
+              <div class="large-8 medium-8 cell">
+                  <label>Code Postale </label>
+                  <input type="text" name="CodePostalMedecin" placeholder="Entrer Code Postale" ngModel/>
+                </div>
+            </div>
+
+
+            <div class="grid-x grid-padding-x">
+                <div class="large-6 medium-6 cell">
+                  <label>Téléphone Portable  </label>
+                  <input type="text" name="NumTelPortableMedecin" placeholder="Entrer Téléphone Portable" ngModel />
+                </div>
+                <div class="large-6 medium-6 cell">
+                  <label>Téléphone Bureau </label>
+                  <input type="text" name="NumTelFixMedecin" placeholder="Entrer Téléphone Bureau" ngModel />
+                </div>
+                
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Select a file for upload:</h5>
+                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                <br><br>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+              </div>
+              <button type="submit" class="success button">Soumettre</button>
+                  
+      </form>
+    </div>
+
+   
+  </div>
+</div>

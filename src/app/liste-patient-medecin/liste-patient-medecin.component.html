@@ -1,0 +1,209 @@
+<div class="container">
+<app-menu-medecin></app-menu-medecin>
+  <div class="ui grid">
+ <!--<div class="ui vertical menu">-->
+
+ <app-dashboard-docteur></app-dashboard-docteur>
+ <!--</div>-->
+
+
+
+
+
+
+
+
+ <div class="twelve wide stretched column">
+
+
+
+ <table class="ui celled padded table">
+  
+  <thead>
+    <tr>
+      <th>
+
+        <form id="filter">
+          <div class="ui loading search">
+              <div class="ui icon input">
+                <input class="prompt" name="terme" type="text" placeholder="Search..." [(ngModel)]="queryString" >
+                <i class="search icon"></i>
+              </div>
+              <div class="results"></div>
+            </div>
+
+          </form>
+      </th>
+      <th colspan="4">
+          <div class="ui right floated small primary labeled icon button">
+              <i class="user icon" data-toggle="modal" data-target="#myModal"></i>
+              <button type="button" data-toggle="modal" data-target="#myModal">Ajouter Patient</button>
+              
+            </div>
+      </th>
+    </tr>
+    <tr><th class="single line">Image Patient</th>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Téléphone Portable</th>
+    <th>Action</th>
+  </tr></thead>
+  <tbody>
+    <tr *ngFor="let user of malist | searchPatient : queryString ">
+      <td>
+        <h2 class="ui center aligned header"> <img src="{{user.ImagePathPatient}}" class="ui small image"></h2>
+      </td>
+      <td class="single line">
+        {{user.NomPatient | searchPatient}}
+      </td>
+      <td>
+        <div class="ui star rating" data-rating="3" data-max-rating="3">{{user.PrenomPatient | searchPatient}}</div>
+      </td>
+      <td class="right aligned">
+        {{user.NumTelPatient}}
+      </td>
+      <td>
+
+          <div class="ui vertical labeled icon buttons">
+              <button class="ui button" [routerLink]="['/FichePatient/'+user.idPatient]">
+                  <i class="file text icon"></i>
+                  Consulter
+              </button>
+              <button class="ui button">
+                  <i class="edit icon"></i>
+                  Modifier
+              </button>
+              <button class="ui button">
+                  <i class="remove icon"></i>
+                Supprimer
+              </button>
+            </div>
+
+
+
+
+      </td>
+    </tr>
+  </tbody>
+ </table>
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ajouter Patient </h4>
+        </div>
+        <div class="modal-body">
+            <form #f="ngForm" (ngSubmit)="addmedecin(f.value)">
+                <div class="grid-x grid-padding-x">
+                    <div class="large-6 medium-6 cell">
+                      <label>Nom  </label>
+                      <input type="text" name="NomPatient" placeholder="Entrer Nom" ngModel />
+                    </div>
+                    <div class="large-6 medium-6 cell">
+                      <label>Prénom </label>
+                      <input type="text" name="PrenomPatient" placeholder="Entrer Prénom" ngModel />
+                    </div>
+                    
+                  </div>
+
+
+
+                  <div class="grid-x grid-padding-x">
+                      <div class="large-6 medium-6 cell">
+                        <label>CIN </label>
+                        <input type="text" name="CINPatient" placeholder="Entrer CIN"  ngModel/>
+                      </div>
+                      <div class="large-6 medium-6 cell">
+                          <label>Sexe </label>
+                          <select name="Sexe" ngModel>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
+                          </select>
+                      </div>
+                      
+                    </div>
+
+
+                    <div class="grid-x grid-padding-x">
+                        <div class="large-12 cell">
+                          <label>Adresse </label>
+                          <textarea name="AdressePatient" placeholder="Entrer Adresse" ngModel></textarea>
+                        </div>
+                      </div>
+
+
+                      <div class="grid-x grid-padding-x">
+                          <div class="large-4 medium-4 cell">
+                            <label>Gouvernorat </label>
+                            <select name="VillePatient" ngModel>
+                              <option value="Ariana">Ariana</option>
+                              <option value="Béja">Béja</option>
+                              <option value="Ben Arous">Ben Arous</option>
+                              <option value="Bizerte">Bizerte</option>
+                              <option value="Gabès">Gabès</option>
+                              <option value="Gafsa">Gafsa</option>
+                              <option value="Jendouba">Jendouba</option>
+                              <option value="Kairouan">Kairouan</option>
+                              <option value="Kasserine">Kasserine</option>
+                              <option value="Kébili">Kébili</option>
+                              <option value="Le Kef">Le Kef</option>
+                              <option value="Mahdia">Mahdia</option>
+                              <option value="La Manouba">La Manouba</option>
+                              <option value="Médenine">Médenine</option>
+                              <option value="Monastir">Monastir</option>
+                              <option value="Nabeul">Nabeul</option>
+                              <option value="Sfax">Sfax</option>
+                              <option value="Sidi Bouzid">Sidi Bouzid</option>
+                              <option value="Siliana">Siliana</option>
+                              <option value="Sousse">Sousse</option>
+                              <option value="Tataouine">Tataouine</option>
+                              <option value="Tozeur">Tozeur</option>
+                              <option value="Tunis">Tunis</option>
+                              <option value="Zaghouan">Zaghouan</option>
+                            </select>
+                          </div>
+                          <div class="large-8 medium-8 cell">
+                              <label>Code Postale </label>
+                              <input type="text" name="CodePostalPatient" placeholder="Entrer Code Postale" ngModel/>
+                            </div>
+                        </div>
+
+
+                        <div class="grid-x grid-padding-x">
+                            <div class="large-6 medium-6 cell">
+                              <label>Téléphone Portable  </label>
+                              <input type="text" name="NumTelPatient" placeholder="Entrer Téléphone Portable" ngModel />
+                            </div>
+                            <div class="large-6 medium-6 cell">
+                                <label>Email </label>
+                                <input type="email" name="EmailPatient" placeholder="Entrer Emaill" ngModel />
+                            </div>
+                            
+                          </div>
+
+
+                          <button type="submit" class="success button">Soumettre</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+</div>
+
+</div>
+
+
+
+
+
+</div>

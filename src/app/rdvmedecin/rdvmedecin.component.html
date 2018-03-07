@@ -1,0 +1,30 @@
+<div class="container">
+  
+<app-menu-medecin></app-menu-medecin>
+<div class="ui grid">
+    <app-dashboard-docteur></app-dashboard-docteur>
+
+    <div class="twelve wide stretched column">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Nom Patient</th>
+            <th>Prénom Patient</th>
+            <th>Téléphone Patient</th>
+            <th>Date RDV</th>
+            <th>Heure RDV</th>
+            <th>Annuler </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rdv of ListeRDV">
+            <td>{{rdv.NomPatient}}</td>
+            <td>{{rdv.PrenomPatient}}</td>
+            <td>{{rdv.NumTelPatient}}</td>
+            <td>{{rdv.DateRDV}}</td>
+            <td>{{rdv.HeureRDV}}</td>
+            <td><button class="button">Anuller</button></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

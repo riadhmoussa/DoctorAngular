@@ -1,0 +1,62 @@
+
+
+ <!--<div class="ui grid">-->
+ <div class="ui vertical menu">
+  
+  
+  <div class="item">
+
+    <img class="ui medium circular image" src="{{ImagePath}}">
+  </div>
+
+
+  <div class="item">
+    {{Nom}} {{Prenom}}
+    <div class="menu">
+      <a class="active item">Search</a>
+      <a class="item">Add</a>
+      <a class="item">Remove</a>
+    </div>
+  </div>
+
+
+  <a class="active teal item">
+    Messages
+    <div class="ui teal left pointing label">1</div>
+  </a>
+
+  <a class="item" routerLink="/ProfilMed">
+    Profil
+    <i class="user icon"></i>
+  </a>
+
+  <a class="item" routerLink="/CabinetMedecin">
+    	
+Position Du Cabinet
+    <i class="map marker alternate icon"></i>
+  </a>
+
+
+
+  <a class="item" routerLink="/ProfilMedecin">
+    Paramètres
+ <i class="edit icon"></i>
+  </a>
+
+
+
+  <a class="item" (click)="logout()">
+    Déconnexion<i class="sign in icon"></i>
+  </a>
+  
+ </div>
+
+ <!--<div class="twelve wide stretched column">
+  <div class="ui segment">
+      <app-liste-patient-medecin></app-liste-patient-medecin>
+    
+  </div>
+</div>-->
+
+
+ <!--</div>-->

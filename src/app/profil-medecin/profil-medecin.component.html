@@ -1,0 +1,77 @@
+<app-menu-medecin></app-menu-medecin>
+<div class="grid-container">
+  
+
+  
+
+  <div class="grid-x grid-padding-x">
+    <div class="large-8 medium-8 cell">
+      
+      <!-- Grid Example -->
+      <form #MDP="ngForm" (ngSubmit)="ChangeMotDePasse(MDP.value)">
+
+
+
+
+          <div class="grid-x grid-padding-x">
+              <div class="large-6 medium-6 cell">
+                  <label>Dernier Mot De Passe </label>
+                  <input type="password" name="LastMotDePasse" placeholder="Entrer Dernier Mot De Passe" ngModel />
+                </div>
+              <div class="large-6 medium-6 cell">
+                <label>Nouveau Mot De Passe </label>
+                <input type="password" name="NewMotDePasse" placeholder="Entrer Nouveau Mot De Passe" ngModel />
+              </div>
+              
+            </div>
+            
+            <button type="submit" class="success button">Modifier</button>
+            </form>
+            <div class="row">
+              <div class="col-sm-6">
+                <form #f="ngForm" (ngSubmit)="AjouterSpecialite(f.value)">
+                  <div class="grid-x grid-padding-x">
+                    <div class="large-6 medium-6 cell">
+                      <label>Liste De Specialite : </label>
+                      <select name="Specialite" ngModel >
+                        <option *ngFor="let Specialite of Specialites" value="{{Specialite.idSpecialite}}">{{Specialite.LibelleSpecialite}}</option>
+                      </select>
+                    </div>
+                  </div>
+      
+                  <button type="submit" class="success button">Ajouter Specialite</button>
+                        
+            </form>
+              </div>
+              <div class="col-sm-6">
+
+
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Specialite </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let specialite of MedecinSpecialite">
+                      <td>{{specialite.LibelleSpecialite}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+
+
+
+
+
+
+              </div>
+            </div>
+            
+    </div>
+
+   
+  </div>
+  
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="row">
+      <div class="col-sm-6" style="background-color:lavender;">
+        
+      <form #f="ngForm" (ngSubmit)="loginmedecin(f.value)">
+          <br/>
+          <p class="centrer">
+              Vous avez déjà utilisé med.tn ?<br>
+              Merci de vous identifier.
+            </p>
+          
+              <div class="large-6 medium-6 cell">
+                <input type="email" name="email" placeholder="Entrer Emaill" ngModel />
+              </div>
+            
+              <div class="large-6 medium-6 cell">
+                <input type="password" name="password" ngModel placeholder="Entrer Mot De Passe" />
+              </div>
+              
+              <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+
+            </form>
+
+      </div>
+      <div class="col-sm-6" style="background-color:lavenderblush;">.col-sm-8</div>
+    </div>
+  </div>

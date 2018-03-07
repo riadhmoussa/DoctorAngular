@@ -1,0 +1,43 @@
+<div class="container">
+
+  <app-menu-medecin></app-menu-medecin>
+  <div class="ui grid">
+    <app-dashboard-docteur></app-dashboard-docteur>
+    <div class="twelve wide stretched column">
+     
+      <form class="ui reply form" #art="ngForm" (ngSubmit)="addArticle(art.value)">
+        <div class="field">
+          <textarea name="ContenuArticle" ngModel></textarea>
+        </div>
+        <div class="ui primary submit labeled icon button">
+          <i class="icon edit"></i><button type="submit">Publier</button> 
+        </div>
+      </form>
+
+
+      <div class="ui comments">
+        <div class="comment" *ngFor="let article of Articles">
+          <a class="avatar">
+            <img src="{{ImagePath}}">
+          </a>
+          <div class="content">
+            <a class="author">{{Nom}} {{Prenom}}</a>
+            <div class="metadata">
+              <div class="date">{{article.DateCommentaire}}</div>
+            </div>
+            <div class="text">
+              {{article.ContenuArticle}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+  </div>
+
+</div>

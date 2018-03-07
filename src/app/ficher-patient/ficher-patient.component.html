@@ -1,0 +1,389 @@
+<div class="container">
+<app-menu-medecin></app-menu-medecin>
+
+
+<div class="five ui buttons">
+  <button class="ui button" data-toggle="modal" data-target="#ImageMedicaleModel">
+    <i class="image icon"></i>Image Medicale
+  </button>
+  <button class="ui button" data-toggle="modal" data-target="#OrdonnanceModel">
+    <i class="treatment icon"></i>Ordonnance
+  </button>
+  <button class="ui button" data-toggle="modal" data-target="#RDVPatient">
+    <i class="add to calendar icon"></i>Rendez-Vous
+  </button>
+  <button class="ui button" data-toggle="modal" data-target="#CertificatModel">
+     <i class="file icon"></i>Certificat
+  </button>
+  <button class="ui button" data-toggle="modal" data-target="#ReglementModel">
+    <i class="money icon"></i>Reglment
+  </button>
+</div>
+
+
+
+
+
+
+<div class="ui centered grid">
+        <div class="six wide tablet eight wide computer column">
+
+
+
+<table class="ui definition table">
+    <tbody>
+      <tr>
+        <td>CIN Patient</td>
+        <td>{{malist.CINPatient}}</td>
+        
+      </tr>
+      <tr>
+            <td>
+                Nom Patient
+            </td>
+            <td>{{malist.NomPatient}}</td>
+        </tr>
+      <tr>
+        <td>Prénom Patient </td>
+        <td>{{malist.PrenomPatient}}</td>
+      </tr>
+      <tr>
+            <td>Né(e) le </td>
+            <td>{{malist.DateNaisPatient}}</td>
+      </tr>
+      <tr>
+                <td>Sexe </td>
+                <td>{{malist.Sexe}}</td>
+      </tr>
+     <tr>
+            <td>Ville </td>
+            <td>{{malist.VillePatient}}</td>
+     </tr>  
+     <tr>
+         <td>Adresse Patient</td>
+         <td>{{malist.AdressePatient}}</td>
+     </tr>
+      
+  </tbody></table>
+
+</div>
+        <div class="six wide tablet eight wide computer column">
+            
+
+
+
+                      <img class="ui small centered image" src="{{malist.ImagePathPatient}}">
+                      <table class="ui definition table">
+                            <tbody>
+                              <tr>
+                                <td>Téléphone Mobile </td>
+                                <td>{{malist.NumTelPatient}}</td>
+                                
+                              </tr>
+                              <tr>
+                                    <td>Email </td>
+                                    <td>{{malist.EmailPatient}}</td>
+                                    
+                              </tr>
+                              <tr>
+                                    <td>Code Postale </td>
+                                    <td>{{malist.CodePostalPatient}}</td>
+                                    
+                              </tr>
+                              
+                          </tbody></table>
+                     
+
+
+
+
+
+        </div>
+      </div>
+
+
+      <form #c="ngForm" (ngSubmit)="addComment(c.value)">
+      <div class="ui fluid labeled left icon input">
+        <i class="comments icon"></i>
+        <input type="text" name="com" placeholder="Ajouter Un Commentaire" ngModel>
+        <button type="submit" class="ui tag label">
+          Ajouter Un Commentaire
+        </button>
+      </div>
+
+</form>
+
+      <div class="ui list" *ngFor="let comment of comments">
+        <div class="item">
+          <i class="comment outline icon"></i>
+          <div class="content">
+            <a class="header">{{comment.DateCommentaire}}</a>
+            <div class="description">{{comment.ContenuCommentaire}}</div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+     <!-- Reglement -->
+     <form #k="ngForm" (ngSubmit)="mont(k.value)">
+<div class="modal fade" id="ReglementModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        
+      <div class="modal-body">
+        
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Historique Du Paiement</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          
+
+          <div class="ui list">
+            <div class="item" *ngFor="let mony of reglement">
+              <i class="money icon"></i>
+              <div class="content">
+                <a class="header">{{mony.DateRgelement}}</a>
+                <div class="description">{{mony.Montant}}</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 medium-12 cell">
+            <label>Saisir Montant  </label>
+            <input type="number" name="montantpatient" placeholder="Entrer Montant" ngModel />
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+     <!-- Certificat -->
+     <div class="modal fade" id="CertificatModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+              <form #m="ngForm" (ngSubmit)="DowCertificat(m.value)">
+            <div class="modal-body">
+              
+              
+              <div class="ui list">
+                <div class="item" *ngFor="let cert of Certificat">
+                  <i class="calendar alternate outline icon"></i>
+                  <div class="content">
+                    <a class="header">Certificat Debut :{{cert.DateDebut}} avec {{cert.Duree}} Jour(s)</a>
+                  </div>
+                </div>
+              </div>
+
+
+                
+              <div class="grid-x grid-padding-x">
+                  <div class="large-12 medium-12 cell">
+                      <label>Date De Début </label>
+                      <input id="date" name="DateDebut" ngModel type="date" placeholder="Entrer Date De Naissance">
+                    </div>
+                <div class="large-12 medium-12 cell">
+                  <label>Durée  </label>
+                  <input type="number" name="Duree" placeholder="Entrer Durée" ngModel />
+                </div>
+                
+              </div>
+      
+      
+      
+      
+      
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+           <!-- Ordonnance -->
+<div class="modal fade" id="OrdonnanceModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <form #o="ngForm" (ngSubmit)="Ord(o.value)">
+      <div class="modal-body">
+        
+
+
+
+        
+          
+        <div class="grid-x grid-padding-x">
+          <div class="large-12 medium-12 cell">
+            <label>Montant  </label>
+            <input type="number" name="montant" placeholder="Entrer Montant" ngModel />
+          </div>
+        </div>
+
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+           <!-- Image Medicale -->
+           <form #Image="ngForm" (ngSubmit)="InsertImageMedicale(Image.value)">
+           <div class="modal fade" id="ImageMedicaleModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                 
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <div class="ui three column grid" *ngFor="let img of ImageMedicale">
+                    <div class="column">
+                      <div class="ui segment">
+                        <img src="{{img.cheminImage}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+                <div class="modal-body">
+                  
+          
+          
+          
+                  
+                    
+                  <div class="card-body">
+                    <h5 class="card-title">Select a file for upload:</h5>
+                    <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+                    <br><br>
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                    </div>
+                  </div>
+          
+          
+          
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+
+
+
+
+
+ <!-- Add RDV -->
+        <div class="modal fade" id="RDVPatient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form #da="ngForm" (ngSubmit)="AddRDV(da.value)">
+              <div class="modal-body">
+                
+        
+                <div class="ui list">
+                  <div class="item" *ngFor="let RDV of TabRDV">
+                    <i class="calendar alternate outline icon"></i>
+                    <div class="content">
+                      <a class="header">{{RDV.DateRDV}}</a>
+                      <div class="description">{{RDV.HeureRDV}}</div>
+                    </div>
+                  </div>
+                </div>
+        
+        
+                
+                  
+                <div class="grid-x grid-padding-x">
+                  <div class="large-12 medium-12 cell">
+                    <label>Date RDV  </label>
+                    <input type="date" name="daterdv" ngModel />
+                  </div>
+                  <div class="large-12 medium-12 cell">
+                      <label>Heure  </label>
+                      <input type="text" name="heurerdv" placeholder="HH:MM" ngModel />
+                    </div>
+                </div>
+        
+        
+        
+        
+        
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
